@@ -16,9 +16,18 @@ def results(correct,questions_total):
 		print 'Please consult with you teacher. (S)he will be able to help you out. Be strong!'
 	quiz()
 
+def final_outcomes (questions_total, correct):
+		print "\nI asked you {} questions.  You got {} of them right.".format(questions_total, correct)
+
 def quiz():
 	correct = 0
-	questions_total = int(raw_input('How many questions do you want to answer today? '))
+	while True:
+		try:
+			questions_total = int(raw_input('How many questions do you want to answer today? '))
+			break
+		except ValueError:
+			print 'Please use an integer so we can begin.'
+
 	choice = raw_input('Do you want (multiply), (divide), (subtract), (add), or (mixed)? (q) to quit ').lower()
 	response = raw_input('Do you want (simple), (intermediate), or (advanced) math quiz? ').lower()
 
@@ -43,7 +52,7 @@ def quiz():
 				correct += 1
 			else:
 				print "No, I'm afraid the answer is %d.\n" % prod
-		print "\nI asked you {} questions.  You got {} of them right.".format(questions_total, correct)
+		final_outcomes (questions_total, correct)
 		results(correct, questions_total)
 	if choice == 'divide':
 		welcome_message(response, choice)
@@ -59,7 +68,7 @@ def quiz():
 				correct += 1
 			else:
 				print "No, I'm afraid the answer is %d.\n" % prod
-		print "\nI asked you 10 questions.  You got %d of them right." % correct
+		final_outcomes (questions_total, correct)
 		results(correct, questions_total)
 	if choice == 'subtract':
 		welcome_message(response, choice)
@@ -75,7 +84,7 @@ def quiz():
 				correct += 1
 			else:
 				print "No, I'm afraid the answer is %d.\n" % prod
-		print "\nI asked you {} questions.  You got {} of them right.".format(questions_total, correct)
+		final_outcomes (questions_total, correct)
 		results(correct, questions_total)
 	if choice == 'add':
 		welcome_message(response, choice)
@@ -91,7 +100,7 @@ def quiz():
 				correct += 1
 			else:
 				print "No, I'm afraid the answer is %d.\n" % prod
-		print "\nI asked you {} questions.  You got {} of them right.".format(questions_total, correct)
+		final_outcomes (questions_total, correct)
 		results(correct, questions_total)
 	if choice == 'mixed':
 		welcome_message(response, choice)
@@ -108,7 +117,7 @@ def quiz():
 				correct += 1
 			else:
 				print "No, I'm afraid the answer is %d.\n" % prod
-		print "\nI asked you {} questions.  You got {} of them right.".format(questions_total, correct)
+		final_outcomes (questions_total, correct)
 		results(correct, questions_total)
 
 		print 'Second is subtraction: '
@@ -124,7 +133,7 @@ def quiz():
 				correct += 1
 			else:
 				print "No, I'm afraid the answer is %d.\n" % prod
-
+		final_outcomes (questions_total, correct)
 		print 'Third is multiplication'
 		for i in range(questions_total):
 			n1 = randint(1, opprand)
@@ -137,6 +146,7 @@ def quiz():
 				correct += 1
 			else:
 				print "No, I'm afraid the answer is %d.\n" % prod
+		final_outcomes (questions_total, correct)
 		print 'Finally, onto division'
 		for i in range(questions_total):
 			n1 = randint(1, opprand)
@@ -149,7 +159,7 @@ def quiz():
 				correct += 1
 			else:
 				print "No, I'm afraid the answer is %d.\n" % prod
-		print "\nI asked you {} questions.  You got {} of them right.".format(questions_total, correct)
+		final_outcomes (questions_total, correct)
 		results(correct, questions_total)
 	elif response == 'q':
 		print 'Please come back soon. Practice makes perfect.'
