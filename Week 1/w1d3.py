@@ -1,5 +1,7 @@
 __author__ = 'Johnny Hung'
 
+#Examples for Week 1 Day 3
+
 def drink_juices(juices, name):
 	dirty_juice = False
 	for juice in juices:

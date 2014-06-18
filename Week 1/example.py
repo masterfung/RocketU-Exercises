@@ -63,11 +63,19 @@
 #             print '\nShe has a total of {}'.format(v)
 #
 # loop(my_lib)
-#
 
-def loopy_loop(dictionary):
-	for k,v in dictionary.iteritems():
+
+#good example to look through
+def hello(name):
+	return 'Hello, {}'.format(name)
+
+def annoying_printer(str):
+	print 'Your face is a', str
+
+def loopy_loop(dict):
+	for k,v in dict.iteritems():
 		if k == 'name':
-			print 'Hello, {}'.format(v)
+			string = hello(v)
+			return string
 
-loopy_loop({'name': "T-Rex O'Farrel"})
+annoying_printer(loopy_loop({'name': "T-Rex O'Farrel"}))
