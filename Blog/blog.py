@@ -3,9 +3,9 @@
 __author__ = '@masterfung'
 
 class BlogPost(object):
-	def __init__(self, title, published_date, author=None):
+	def __init__(self, title, published_date, content, author=None):
 		self.title = title
-		self.content = ''
+		self.content = content
 		self.published_date = published_date
 		self.author = author
 

@@ -10,8 +10,8 @@ class Author(object):
 	def __repr__(self):
 		return self.name
 
-	def write_blog_post(self, title, published_date):
-		b = BlogPost(title, published_date, self)
+	def write_blog_post(self, title, published_date, content):
+		b = BlogPost(title, published_date, content, self)
 		self.blog_posts.append(b)
 		return b
 
