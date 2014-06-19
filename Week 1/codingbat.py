@@ -1,6 +1,8 @@
 __author__ = 'Johnny Hung'
 #warmup1
 
+# ones with three *** needs to be reviewed again.
+
 def sleep_in(weekday,vacation):
 	if weekday == False and vacation == False:
 		return True
@@ -402,6 +404,7 @@ def sorta_sum(a, b):
 		return sum
 
 #string2
+
 def cat_dog(str):
 	return str.count('cat') == str.count('dog')
 
@@ -412,17 +415,40 @@ def double_char(str):
 	return new_word
 
 def count_hi(str):
-	pass
+	return str.count('hi')
 
 def count_code(str):
 	count = 0
-	if str.count('code'):
-		count += 1
-	elif str.count('cope'):
-		count += 1
-	elif str.count('cooe'):
-		count += 1
-	return count
+	return str.count('code') + str.count('cope') + str.count('cooe') + str.count('coze') + str.count('core') + str.count('cole')
+
+def end_other(a, b): #***
+	a = a.lower()
+	b = b.lower()
+	long_s, short_s = (a,b) if len(a) >= len(b) else (b,a)
+	return long_s.endswith(short_s)
+
+def xyz_there(str): # ***
+	i=0
+	while "xyz" in str[i:]:
+		if str[i-1+str[i:].index("xyz")] != ".":
+			return True
+		i += str[i:].index("xyz")+2
+	return False
+
+	# period = 0
+	# i = 0
+	# if len(str) > 3:
+	# 	if str.count('.') == True:
+	# 		period += 1
+	# 	elif str.count('xyz'):
+	# 		i += 1
+	# 	if period > 0:
+	# 		return False
+	# 	elif i > 0:
+	# 		return True
+	# else:
+	# 	return False
+
 
 # list2
 
@@ -450,7 +476,60 @@ def sum67(nums): #notfinished
 			continue
 	return sum
 
+def centered_average(nums):
+	nums.sort()
+	a = len(nums)
+
 #logic 2
 
 def make_bricks(small, big, goal):
-	
+	sum = goal
+	sum -= 5*min(big,goal/5)
+	return sum-small <= 0
+
+def lone_sum(a, b, c):
+	sum = 0
+	if a == b == c:
+		sum = 0
+		return sum
+	elif a == c:
+		sum = b
+		return sum
+	elif b == c:
+		sum = a
+		return sum
+	elif a == b:
+		sum = c
+		return sum
+	else:
+		sum = a + b + c
+		return sum
+
+def lucky_sum(a, b, c):
+	sum = 0
+	if a == 13:
+		return sum
+	elif b == 13:
+		sum = a
+		return sum
+	elif c == 13:
+		sum = a + b
+		return sum
+	else:
+		sum = a + b + c
+		return sum
+
+def no_teen_sum(a, b, c): # ***
+	def fix_teen(n):
+		return n if n not in [13, 14, 17, 18, 19] else 0
+	return fix_teen(a) + fix_teen(b) + fix_teen(c)
+
+def round_sum(a, b, c):
+	def round10(num):
+		return (num + 5)/10*10
+	return round10(a) + round10(b) +round10(c)
+
+def close_far(a, b, c): #***
+	return (abs(abs(b)-abs(c))>=2) and \
+	  ((abs(abs(b)-abs(a))<=1 and abs(abs(c)-abs(a))>=2) \
+	  or (abs(abs(c)-abs(a))<=1 and abs(abs(b)-abs(a))>=2))
