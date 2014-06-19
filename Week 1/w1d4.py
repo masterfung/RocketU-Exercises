@@ -103,7 +103,10 @@ class Bike(object):
 		self.price = price
 		self.speed = speed
 		self.direction = direction
-		self.accessory = []
+		self.accessory = {
+			'maintenance': [],
+			'swag': [],
+		}
 		self.condition = condition
 
 	def __repr__(self):
@@ -123,21 +126,9 @@ class Bike(object):
 		elif self.direction == 'right':
 			self.direction = 90
 
-	def accessories(self):
-		self.accessory.append(raw_input('Do you want: (R)eflectors, '
-										'(LED) lights, (T)ire pump, '
-										'or (S)afety Jacket? ').lower())
-		if self.accessory !=
-		ask_user_again = raw_input('Do you want to buy more? (Y/N) ').lower()
-		if ask_user_again == 'y':
-			self.accessory.append(raw_input('Do you want: (R)eflectors, '
-										'(LED) lights, (T)ire pump, '
-										'or (S)afety Jacket? ').lower())
-		elif ask_user_again == 'n':
-			print 'Come back soon for more accessories.'
-			return self.accessory
-		else:
-			print 'I am not sure what you meant. Please try again.'
+	def accessories(self, acc_type, accessory):
+		pass
+
 
 my_bike = Bike('Adult', 53, 'road', 4000, 0, 0, )
 print my_bike
