@@ -477,8 +477,20 @@ def sum67(nums): #notfinished
 	return sum
 
 def centered_average(nums):
-	nums.sort()
-	a = len(nums)
+	sum = 0
+	for i in nums:
+		sum += i
+	return (sum - (max(nums)+min(nums))) / (len(nums)-2)
+
+def sum13(nums):
+	if len(nums) == 0:
+		return 0
+	for i in range(0, len(nums)):
+		if nums[i] == 13:
+			nums[i] = 0
+			if i+1 < len(nums):
+				nums[i+1] = 0
+	return sum(nums)
 
 #logic 2
 
@@ -533,3 +545,11 @@ def close_far(a, b, c): #***
 	return (abs(abs(b)-abs(c))>=2) and \
 	  ((abs(abs(b)-abs(a))<=1 and abs(abs(c)-abs(a))>=2) \
 	  or (abs(abs(c)-abs(a))<=1 and abs(abs(b)-abs(a))>=2))
+
+def make_chocolate(small, big, goal):
+	sum = goal
+	sum -= 5*min(big,goal/5)
+	if sum > small:
+		return -1
+	else:
+		return sum
