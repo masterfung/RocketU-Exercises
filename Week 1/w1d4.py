@@ -48,20 +48,98 @@ cheesecake = Cake('cheesecake', '12', 'Artic Circle', 1)
 print cheesecake.craving()
 
 class Car(object):
-	def __init__(self, color, make, speed=0):
+	def __init__(self, color, make, direction, speed=0):
 		if color == 'red':
 			self.color = 'white'
 		else:
 			self.color = color
 		self.make = make
+		self.direction = direction
 		self.speed = speed
+
 	def __repr__(self):
 		'''
 		Prints out cooly like line 67, when called
 		'''
 		return '{} {}'.format(self.color, self.make)
 
-new_car = Car('red', 'Tesla')
+	def accelerate(self):
+		self.speed += 100
+
+	def brake(self):
+		self.speed -= 10
+
+	def turning(self):
+		if self.direction == 'left':
+			self.direction = -90
+		elif self.direction == 'right':
+			self.direction = 90
+
+
+new_car = Car('red', 'Tesla', 'left')
 print new_car.color
 print new_car.make
 print new_car
+
+new_car.accelerate()
+new_car.accelerate()
+new_car.accelerate()
+new_car.accelerate()
+new_car.accelerate()
+new_car.accelerate()
+new_car.brake()
+new_car.brake()
+new_car.turning()
+
+print new_car.speed
+print new_car.direction
+
+
+class Bike(object):
+	def __init__(self, style, frame_size, type, price, speed, direction, condition = 'new'):
+		self.style = style
+		self.frame_size = frame_size
+		self.type = type
+		self.price = price
+		self.speed = speed
+		self.direction = direction
+		self.accessory = []
+		self.condition = condition
+
+	def __repr__(self):
+		return 'You selection yielded: {} style bike,' \
+			   ' {}cm size, {} type, ${} price per unit, ' \
+			   '{} condition. You have {} accessories.'.format(self.style, self.frame_size, self.type, self.price, self.condition, len(self.accessory))
+
+	def accelerate(self):
+		self.speed += 100
+
+	def brake(self):
+		self.speed -= 10
+
+	def turning(self):
+		if self.direction == 'left':
+			self.direction = -90
+		elif self.direction == 'right':
+			self.direction = 90
+
+	def accessories(self):
+		self.accessory.append(raw_input('Do you want: (R)eflectors, '
+										'(LED) lights, (T)ire pump, '
+										'or (S)afety Jacket? ').lower())
+		if self.accessory !=
+		ask_user_again = raw_input('Do you want to buy more? (Y/N) ').lower()
+		if ask_user_again == 'y':
+			self.accessory.append(raw_input('Do you want: (R)eflectors, '
+										'(LED) lights, (T)ire pump, '
+										'or (S)afety Jacket? ').lower())
+		elif ask_user_again == 'n':
+			print 'Come back soon for more accessories.'
+			return self.accessory
+		else:
+			print 'I am not sure what you meant. Please try again.'
+
+my_bike = Bike('Adult', 53, 'road', 4000, 0, 0, )
+print my_bike
+my_bike.accessories()
+print my_bike.accessories
