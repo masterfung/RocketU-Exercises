@@ -7,9 +7,16 @@ __author__ = '@masterfung'
 def blog_manager(user, blog_posts, authors):
 	action = raw_input('Would you like to (a)dd a post or (s)ee existing posts? ').lower()
 	if action == 'a':
+		is_author = raw_input('Are you the author of this post? (Y/N) ').lower()
+		if is_author == 'y':
+			author = user
+		else:
+			author_name = raw_input('What is your name? ')
+			author = Author(author_name)
+			authors.append(author)
 		title = raw_input('What is the title? ')
 		published_date = raw_input('When was this published? ')
-		b = user.write_blog_post(title, published_date) #user is the author
+		b = author.write_blog_post(title, published_date) #user is the author
 		blog_posts.append(b)
 		print 'Congrats! Your post has been posted about {}.'.format(b.title)
 		blog_manager(user, blog_posts, authors)
