@@ -403,7 +403,7 @@ def sorta_sum(a, b):
 
 #string2
 def cat_dog(str):
-	pass
+	return str.count('cat') == str.count('dog')
 
 def double_char(str):
 	new_word = ''
@@ -412,6 +412,17 @@ def double_char(str):
 	return new_word
 
 def count_hi(str):
+	pass
+
+def count_code(str):
+	count = 0
+	if str.count('code'):
+		count += 1
+	elif str.count('cope'):
+		count += 1
+	elif str.count('cooe'):
+		count += 1
+	return count
 
 # list2
 
@@ -439,3 +450,7 @@ def sum67(nums): #notfinished
 			continue
 	return sum
 
+#logic 2
+
+def make_bricks(small, big, goal):
+	
