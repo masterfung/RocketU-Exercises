@@ -1,3 +1,5 @@
+#from author import Author
+
 __author__ = '@masterfung'
 
 class BlogPost(object):
@@ -10,4 +12,9 @@ class BlogPost(object):
 	def __repr__(self):
 		return self.title
 
+	def change_author(self, new_author):
+		change_a = self.author
+		change_a.blog_posts.remove(self)
+		new_author.blog_posts.append(self)
+		self.author = new_author
 
