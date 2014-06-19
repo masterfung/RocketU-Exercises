@@ -277,6 +277,24 @@ def max_end3(nums):
 
 	return [nums[0]]*3 if nums[0] >= nums[-1] else [nums[-1]]*3
 
+def middle_way(a, b):
+	return [a[1], b[1]]
+
+def make_ends(nums):
+	return [nums[0], nums[-1]]
+
+def has23(nums):
+	count = 0
+	for i in nums:
+		if i == 3:
+			count +=1
+		elif i == 2:
+			count +=1
+	if count > 0:
+		return True
+	else:
+		return False
+
 #logic1
 def cigar_party(cigars, is_weekend):
 	if is_weekend == False and cigars <= 60 and cigars < 40:
@@ -321,23 +339,14 @@ def squirrel_play(temp, is_summer):
 	else:
 		return True
 
-def caught_speeding(speed, is_birthday): #incomplete
-	if speed <= 60 and is_birthday == False:
-		return 0
-	elif 61 <= speed <= 80 and is_birthday == False:
-		return 1
-	elif speed <= 65 and is_birthday == True:
-		return 0
-	elif speed >= 81 and is_birthday == False:
+def caught_speeding(speed, is_birthday):
+	speeding = speed - (65 if is_birthday else 60)
+	if speeding > 20:
 		return 2
-	elif speed > 65 and is_birthday == False:
-		return 2
-	elif speed > 65 and is_birthday == True:
-		return 1
-	elif speed >= 81 and is_birthday == True:
+	elif speeding > 0:
 		return 1
 	else:
-		return 2
+		return 0
 
 def near_ten(num):
 	if num % 10 <= 2:
@@ -386,11 +395,23 @@ def alarm_clock(day, vacation):
 		return wkd
 
 def sorta_sum(a, b):
-	pass
+	sum = a + b
+	if 10 <= sum <= 19:
+		return 20
+	else:
+		return sum
 
 #string2
 def cat_dog(str):
-	count
+	pass
+
+def double_char(str):
+	new_word = ''
+	for i in str:
+		new_word += i*2
+	return new_word
+
+def count_hi(str):
 
 # list2
 
@@ -403,3 +424,18 @@ def count_evens(nums):
 
 def big_diff(nums):
 	return max(nums) - min(nums)
+
+def sum67(nums): #notfinished
+	sum = 0
+	jump = False
+	for i in nums:
+		if i != 6 and i != 7:
+			jump = False
+		if i == 7 or i == 6:
+			jump == True
+		if jump == False:
+			sum += i
+		elif jump == True:
+			continue
+	return sum
+
