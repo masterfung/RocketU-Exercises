@@ -8,7 +8,8 @@ class Building(object):
 		self.address = address
 		self.num_floors = num_floors
 		self.doorman = doorman
-		self.name = self.name
+		self.name = name
+		self.apartment = []
 
 	def __repr__(self):
 		return self.address

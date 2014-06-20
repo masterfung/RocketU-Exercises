@@ -1,6 +1,3 @@
-import sys
-from author import Author
-
 __author__ = '@masterfung'
 
 
