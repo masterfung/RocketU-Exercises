@@ -1,6 +1,6 @@
-from building_classes import pass BuildingManager
+from building_classes import BuildingManager
 
 __author__ = '@masterfung'
 
 def main():
-	pass
+	first_question = raw_input()

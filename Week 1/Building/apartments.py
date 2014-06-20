@@ -11,6 +11,7 @@ class Apartment(object):
 		self.sq_ft = sq_ft
 		self.nums_bed = nums_bed
 		self.bath = bath
+		#self.renters = []
 		self.ammetities = {
 			'furnishes': [],
 			'services': [],
@@ -19,11 +20,8 @@ class Apartment(object):
 	def __repr__(self):
 		return self.unit_num
 
-	def movein(self):
+	def movein(self, name, ):
 		pass
 
 	def moveout(self):
-		pass
-
-	def change_renter(self):
 		pass
