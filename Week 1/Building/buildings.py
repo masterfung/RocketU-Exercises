@@ -10,6 +10,9 @@ class Building(object):
 		self.apartment = []
 		self.location = []
 
+	def __repr__(self):
+		return self.total_occupants
+
 	def renter(self):
 		pass
 
