@@ -48,7 +48,7 @@ def add_renter():
 		age = raw_input('Age: ')
 		renter = apartment.make_renter(name, age) #apartment can make renter or assign renters
 	else:
-		renter = None
+		renter = None #insure no errors will appear
 		print 'That apartment is full.'
 
 	return renter
