@@ -3,17 +3,8 @@ from random import randint
 
 __author__ = 'htm'
 
-
-
-class Pokemon(object):
+class ComputerPokemon(object):
 	def __init__(self):
-		pass
-
-	def __repr__(self):
-		return self.name, self.type
-
-	@staticmethod
-	def randomizer():
 		alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 		vowels = 'AEIOU'
 		mon = 'MON'
@@ -40,19 +31,20 @@ class Pokemon(object):
 			'normal': 'none',
 			'ground': 'none',
  		}
-		p = Pokemon()
-		p.random_number = randint(1,15)
-		p.name = ''.join(random.choice(alpha + vowels[1] + vowels + vowels) for i in range(p.random_number)) + mon
-		p.type = random.choice(types)
-		p.powers = random.choice(powers[p.type])
-		p.weakness = weaknesses[p.type]
-		p.super_effective = False
+		random_number = randint(1,15)
+		self.name = ''.join(random.choice(vowels[1] + alpha + alpha + vowels + vowels) for i in range(random_number)) + mon
+		self.type = random.choice(types)
+		self.type = random.choice(types)
+		self.powers = random.choice(powers[self.type])
+		self.weakness = weaknesses[self.type]
+		self.super_effective = False
 		for weakness in weaknesses:
-			if weakness == p.type:
-				p.super_effective = True
+			if weakness == self.type:
+				self.super_effective = True
 			else:
-				p.super_effective = False
+				self.super_effective = False
 
-		p.health_points = randint(1,10)
+		self.health_points = randint(1,10)
 
-		return p
+	def __repr__(self):
+		return self.name, self.type
