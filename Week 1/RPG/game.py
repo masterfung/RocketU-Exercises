@@ -13,7 +13,7 @@ class Nirvana(object):
 	# Math quiz begins
 
 	def math_quiz(self):
-		math_questions_to_answer = randint(0, 10)
+
 		math_types = ['add', 'subtract', 'multiply', 'divide']
 		random_math_types = random.choice(math_types)
 		return random_math_types
@@ -24,7 +24,7 @@ class Nirvana(object):
 		return rand_difficulty
 	
 	def question_randomizer(self):
-		questions_range = randint(0, 5)
+		questions_range = randint(1, 5)
 		return questions_range
 
 	def welcome_message(self, response, random_math_types):
@@ -110,22 +110,31 @@ class Nirvana(object):
 	#Math quiz ends
 
 	def demons(self):
-		demons = [
-			['Clancy the Good', 'Terrance the Brave', 'Jorge the Trustworthy', 'Penguina the Prudent', 'Susie the Fair', 'Maggie the Kind'],
-			['Sauron the Greedy', 'Phillip Morris the Kingslayer', 'Hittles the Adolf of Men Doom', 'Yvette the Evil', 'Maleficent the malicious', 'Alexandra the Whore']
-		]
-		demon_type = randint(0,1)
-		demon = random.choice(demons[demon_type])
-		return demon
+		good_evil = ['good', 'evil']
+		demons = {
+			'good': ['Clancy the Good', 'Terrance the Brave', 'Jorge the Trustworthy', 'Penguina the Prudent', 'Susie the Fair', 'Maggie the Kind'],
+			'evil': ['Sauron the Greedy', 'Phillip Morris the Kingslayer', 'Hittles the Adolf of Men Doom', 'Yvette the Evil', 'Maleficent the malicious', 'Alexandra the Whore']
+			}
+
+		g_e = random.choice(good_evil)
+		demon = random.choice(demons[g_e])
+		return demon, g_e
+
+	def demon_randomizer(self):
+		demon_choice = self.demons()
+		demon_appearing = randint(0, 1)
+		if demon_appearing == 1:
+			return demon_choice
 
 	def mystery_box(self):
-		mystery_present = [
-			['angelic dust', 'holy water', 'blessed sword', 'protection spell', 'invisibility cloak', 'antibiotics'],
-			['death spell', 'rabies', 'wolves', 'decapitated', 'internal bleeding', 'dysentery']
-		]
-		mystery_random = randint(0,1)
-		mystery = random.choice(mystery_present[mystery_random])
-		return mystery
+		good_evil = ['good', 'evil']
+		mystery_present = {
+			'good': ['angelic dust', 'holy water', 'blessed sword', 'protection spell', 'invisibility cloak', 'antibiotics'],
+			'evil': ['death spell', 'rabies', 'wolves', 'decapitated', 'internal bleeding', 'dysentery']
+		}
+		g_e = random.choice(good_evil)
+		mystery = random.choice(mystery_present[g_e])
+		return mystery, g_e
 
 	def random_event_generator(self):
 		pass
@@ -155,11 +164,12 @@ class Nirvana(object):
 
 		while user_response != 'n':
 			location = self.destinations()
+			sin_land = self.seven_sins()
 			print 'Before entering the the nirvana quest, you must pass' \
 				  ' the test of the gods, overcome demons and evils, and answer' \
 				  'all the questions correctly to achieve enlightenment.' \
 				  'A spirit appears and take through a portal.'
-			print 'Your currently at this location: {}.'.format(location)
+			print 'Your currently at this location: {}. The land of : {} '.format(location, sin_land)
 			print 'Suddenly, the ground shakes, and a mysterious ' \
 				  'orb appears and prompt you to a series of math questions. Get ready!'
 			print 'You have {} hitpoints. Dont let it get to zero! You will die!'.format(hit_points)
@@ -167,10 +177,28 @@ class Nirvana(object):
 			rand_difficulty = self.computer_random()
 			questions_range = self.question_randomizer()
 			self.quiz(questions_range, rand_difficulty, random_math_types, correct)
+			demon, g_e = self.demons()
 			if correct != questions_range:
 				hit_points -= 1
+			else:
+				enlightenment += 1
+			print 'Your current health is at: {}/10 ' \
+				  'and your enlightenment is at: {}/5.'.format(hit_points, enlightenment)
+			print 'All of a sudden, a demon named: {} appears. ' \
+				  'You can either attack or accept the mystery gift.' \
+				  ' You accept the mystery gift, you have to open it.'.format(de)
+			attack_open_gift = raw_input('(A)ccept the gift or A(t)tack the demon? ').lower()
+			if attack_open_gift == 'a':
+				mystery, good_or_evil = self.mystery_box()
+				print 'The mystery gift you received is: {}.'.format(mystery)
+				if good_or_evil == 'evil':
+					hit_points -= 1
+					print 'Evil mystery gift. Bad demon! Your hitpoint goes down!' \
+						  ' Current hitpoint is: {}.'.format(hit_points)
+				else:
+					hit_points += 1
+					print 'Good stuff you got! You gain an extra health point!' \
+						  ' Current hitpoint is: {}.'.format(hit_points)
 
-			print hit_points
-			print correct
 			break
 
