@@ -6,7 +6,7 @@ __author__ = 'Johnny Hung'
 def welcome_message(response, choice):
 	print 'Welcome to the {} {} math quiz. Get ready!'.format(response, choice)
 
-def results(correct, questions_total):
+def results(result_of_math, questions_total):
 	if correct == questions_total:
 		print 'Perfecto! Onto the next level!'
 	elif correct > (questions_total * .75):
@@ -22,7 +22,8 @@ def computer_random():
 	rand = random.randint(0, 3)
 	return options[rand]
 
-def get_parts(opprand, questions_total, choice, correct):
+def get_parts(opprand, questions_total, choice):
+	correct = 0
 	computer_choice = computer_random()
 	if choice == 'mixed':
 		choice = computer_choice
@@ -49,11 +50,11 @@ def get_solution(choice, n1, n2):
 	elif choice == 'subtract':
 		return n1 - n2
 
-def final_outcomes (questions_total, correct):
-	print "\nI asked you {} questions.  You got {} of them right.".format(questions_total, correct)
+def final_outcomes (questions_total, result_of_math):
+	print "\nI asked you {} questions.  You got {} of them right.".format(questions_total, result_of_math)
 
 def quiz():
-	correct = 0
+
 	while True:
 		try:
 			questions_total = int(raw_input('How many questions do you want to answer today? '))
@@ -74,41 +75,44 @@ def quiz():
 	if choice == 'multiply':
 		welcome_message(response, choice)
 
-		get_parts(opprand, questions_total, choice, correct)
+		result_of_math = get_parts(opprand, questions_total, choice)
 
-		final_outcomes(questions_total, correct)
+		final_outcomes(questions_total, result_of_math)
 
-		results(correct, questions_total)
+		results(result_of_math, questions_total)
 
 	elif choice == 'divide':
 		welcome_message(response, choice)
 
-		get_parts(opprand, questions_total, choice, correct)
+		result_of_math = get_parts(opprand, questions_total, choice)
 
-		final_outcomes(questions_total, correct)
+		final_outcomes(questions_total, result_of_math)
 
-		results(correct, questions_total)
+		results(result_of_math, questions_total)
 	elif choice == 'subtract':
 		welcome_message(response, choice)
 
-		get_parts(opprand, questions_total, choice, correct)
+		result_of_math = get_parts(opprand, questions_total, choice)
 
-		final_outcomes(questions_total, correct)
+		final_outcomes(questions_total, result_of_math)
 
-		results(correct, questions_total)
+		results(result_of_math, questions_total)
 	elif choice == 'add':
 		welcome_message(response, choice)
 
-		get_parts(opprand, questions_total, choice, correct)
+		result_of_math = get_parts(opprand, questions_total, choice)
 
-		final_outcomes(questions_total, correct)
+		final_outcomes(questions_total, result_of_math)
 
-		results(correct, questions_total)
+		results(result_of_math, questions_total)
 	elif choice == 'mixed':
 		welcome_message(response, choice)
-		correct = get_parts(opprand, questions_total, choice, correct)
-		final_outcomes(questions_total, correct)
-		results(correct, questions_total)
+
+		result_of_math = get_parts(opprand, questions_total, choice)
+
+		final_outcomes(questions_total, result_of_math)
+
+		results(result_of_math, questions_total)
 	elif response == 'q':
 		print 'Please come back soon. Practice makes perfect.'
 	else:
