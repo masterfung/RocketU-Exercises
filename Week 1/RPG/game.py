@@ -1,7 +1,7 @@
 import random
 from random import randint
 
-__author__ = 'htm'
+__author__ = '@masterfung'
 
 class Nirvana(object):
 	def __init__(self, name = 'John Doe'):
@@ -61,7 +61,7 @@ class Nirvana(object):
 		if random_math_types == 'multiply':
 			return n1 * n2
 		elif random_math_types == 'divide':
-			return n1 / n2
+			return float(n1 / n2)
 		elif random_math_types == 'add':
 			return n1 + n2
 		elif random_math_types == 'subtract':
@@ -150,62 +150,84 @@ class Nirvana(object):
 	def destinations(self):
 		locations = ['Chicago', 'New York City', 'Vancouver', 'Paris', 'Tibet',
 					 'Melbourne', 'Moscow', 'Rome', 'Tokyo', 'Taipei', 'Beijing',
-					 'Cairo', 'Cape Town']
+					 'Cairo', 'Cape Town', 'Rio']
 		location = random.choice(locations)
 		return location
 
-	def game_play(self):
-		hit_points = 10
-		correct = 0
-		enlightenment = 0
-		location_count = 7
-		self.name = raw_input('What is your name? ')
-		print 'Welcome to the Nirvana game. {}, you will face a lot ' \
-			  'challenges and evil. Be warned'.format(self.name)
-		user_response = raw_input('Would you like to pursue the quest '
+	def get_user_response(self):
+		return raw_input('Would you like to pursue the quest '
 								  'to nirvana? (Y/N) ').lower()
 
-		while user_response != 'n':
-			location = self.destinations()
-			sin_land = self.seven_sins()
-			print 'Before entering the the nirvana quest, you must pass' \
-				  ' the test of the gods, overcome demons and evils, and answer' \
-				  'all the questions correctly to achieve enlightenment.' \
-				  'A spirit appears and take through a portal.'
-			print 'Your currently at this location: {}. The land of: {}!'.format(location, sin_land)
-			print 'Suddenly, the ground shakes, and a mysterious ' \
-				  'orb appears and prompt you to a series of math questions. Get ready!'
-			print 'You have {} hitpoints. Dont let it get to zero! You will die!'.format(hit_points)
-			random_math_types = self.math_quiz()
-			rand_difficulty = self.computer_random()
-			questions_range = self.question_randomizer()
-			final_score = self.quiz(questions_range, rand_difficulty, random_math_types, correct)
-			demon, g_e = self.demons()
-			print final_score
-			print questions_range
-			if final_score < questions_range: #need to fix this condition
-				hit_points -= 1
-			else:
-				enlightenment += 1
-			print 'Your current health is at: {}/10 ' \
-				  'and your enlightenment is at: {}/5.'.format(hit_points, enlightenment)
-			print 'All of a sudden, a demon named: {} appears. ' \
-				  'You can either attack or accept the mystery gift.' \
-				  ' You accept the mystery gift, you have to open it.'.format(demon)
-			attack_open_gift = raw_input('(A)ccept the gift or A(t)tack the demon? ').lower()
-			if attack_open_gift == 'a':
-				mystery, good_or_evil = self.mystery_box()
-				print 'The mystery gift you received is: {}.'.format(mystery)
-				if good_or_evil == 'evil':
-					hit_points -= 1
-					print 'Evil mystery gift. Bad demon! Your hitpoint goes down!' \
-						  ' Current hitpoint is: {}.'.format(hit_points)
-				else:
-					hit_points += 1
-					print 'Good stuff you got there! You gain an extra health point!' \
-						  ' Current hitpoint is: {}.'.format(hit_points)
-			elif attack_open_gift == 't':
-				pass
 
-			break
+	def game_play(self):
+		user_response = self.get_user_response()
+		self.name = raw_input('What is your name? ')
+		while True:
+			hit_points = 10
+			correct = 0
+			enlightenment = 0
+			location_count = 7
+
+			print 'Welcome to the Nirvana game. {}, you will face a lot ' \
+				  'challenges and evil. Be warned'.format(self.name)
+
+			print 'Before entering the the nirvana quest, you must pass' \
+					  ' the test of the gods, overcome demons and evils, and answer' \
+					  ' all the questions correctly to achieve enlightenment. ' \
+					  'A spirit appears and take through a portal.'
+
+			while user_response != 'n':
+				location = self.destinations()
+				sin_land = self.seven_sins()
+				print 'Your currently at this location: {}. The land of: {}!'.format(location, sin_land)
+				print 'Suddenly, the ground shakes, and a mysterious ' \
+					  'orb appears and prompt you to a series of math questions. Get ready!'
+				print 'You have {} hitpoints. Dont let it get to zero! You will die!'.format(hit_points)
+				random_math_types = self.math_quiz()
+				rand_difficulty = self.computer_random()
+				questions_range = self.question_randomizer()
+				final_score = self.quiz(questions_range, rand_difficulty, random_math_types, correct)
+				demon, g_e = self.demons()
+				if final_score < questions_range: #need to fix this condition
+					hit_points -= 1
+				else:
+					enlightenment += 1
+				print 'Your current health is at: {}/10 ' \
+					  'and your enlightenment is at: {}/5.'.format(hit_points, enlightenment)
+				print 'All of a sudden, a demon named: {} appears. ' \
+					  'You can either attack or accept the mystery gift.' \
+					  ' When youu accept the mystery gift, you have to open it.'.format(demon)
+				attack_open_gift = raw_input('(A)ccept the gift or A(t)tack the demon? ').lower()
+				if attack_open_gift == 'a':
+					mystery, good_or_evil = self.mystery_box()
+					print 'The mystery gift you received is: {}.'.format(mystery)
+					if good_or_evil == 'evil':
+						hit_points -= 1
+						print 'Evil mystery gift. Bad demon! Your hitpoint goes down!' \
+							  ' Current hitpoint is: {}.'.format(hit_points)
+					else:
+						hit_points += 1
+						print 'Good stuff you got there! You gain an extra health point!' \
+							  ' Current hitpoint is: {}.'.format(hit_points)
+				elif attack_open_gift == 't':
+					chance_of_hit = randint(0, 1)
+					if chance_of_hit == 1:
+						print 'You defeated the demon {} without a scratch on you!'.format(demon)
+					else:
+						hit_points -= 1
+						print 'Your attempt failed. Your hitpoints suffer. ' \
+							  'It is now @: {} hit points.'.format(hit_points)
+				location_count -= 1
+				print 'You now have {} location(s) left to achieve nirvana.'.format(location_count)
+
+				if location_count == 0:
+					if enlightenment == 5:
+						print 'You have achieve englightenment.'
+						break
+					else:
+						print 'You did not achieve enlightenment. Try again in another life!'
+						break
+
+
+				break
 
