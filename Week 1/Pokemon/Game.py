@@ -119,8 +119,12 @@ class Game(object):
 						user_switch += 1
 						player = Pokemon.randomizer()
 						print 'The new selection is: {}.'.format(player.name)
-						print 'Egotistical narsassictic trainer is ' \
+						print 'Egotistical narcissistic trainer is ' \
 							  'getting annoyed! Limit how often you use your re-select!'
+						if user_switch == 3:
+							print 'The egotsitical narcissistic got annoyed and attacked' \
+								  ' you with his/her pokemon. Game over! Choose faster next' \
+								  ' time.'
 				elif response == 'r':
 					break
 				else:
