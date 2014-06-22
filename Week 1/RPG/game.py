@@ -24,7 +24,7 @@ class Nirvana(object):
 		return rand_difficulty
 	
 	def question_randomizer(self):
-		questions_range = randint(1, 5)
+		questions_range = randint(1, 1)
 		return questions_range
 
 	def welcome_message(self, response, random_math_types):
@@ -162,11 +162,14 @@ class Nirvana(object):
 	def game_play(self):
 		user_response = self.get_user_response()
 		self.name = raw_input('What is your name? ')
+
+		i = 0
 		while True:
-			hit_points = 10
-			correct = 0
-			enlightenment = 0
-			location_count = 7
+			if i == 0:
+				hit_points = 10
+				correct = 0
+				enlightenment = 0
+				i += 1
 
 			print 'Welcome to the Nirvana game. {}, you will face a lot ' \
 				  'challenges and evil. Be warned'.format(self.name)
@@ -212,22 +215,25 @@ class Nirvana(object):
 				elif attack_open_gift == 't':
 					chance_of_hit = randint(0, 1)
 					if chance_of_hit == 1:
+						location_count -= 1
 						print 'You defeated the demon {} without a scratch on you!'.format(demon)
 					else:
 						hit_points -= 1
+						location_count -= 1
 						print 'Your attempt failed. Your hitpoints suffer. ' \
 							  'It is now @: {} hit points.'.format(hit_points)
-				location_count -= 1
-				print 'You now have {} location(s) left to achieve nirvana.'.format(location_count)
-
-				if location_count == 0:
-					if enlightenment == 5:
-						print 'You have achieve englightenment.'
-						break
-					else:
-						print 'You did not achieve enlightenment. Try again in another life!'
-						break
 
 
+				if enlightenment == 5:
+					break
+				else:
+					print 'You did not achieve enlightenment. Try again in another life!'
+					break
+
+
+			if enlightenment == 5:
+				print 'You achieved nirvana state!'
 				break
 
+			# if enlightenment == 5:
+			# 	break
