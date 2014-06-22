@@ -164,11 +164,11 @@ class Nirvana(object):
 		self.name = raw_input('What is your name? ')
 
 		i = 0
-		while True:
+		enlightenment = 0
+		while enlightenment < 5:
 			if i == 0:
 				hit_points = 10
 				correct = 0
-				enlightenment = 0
 				i += 1
 
 			print 'Welcome to the Nirvana game. {}, you will face a lot ' \
@@ -215,14 +215,11 @@ class Nirvana(object):
 				elif attack_open_gift == 't':
 					chance_of_hit = randint(0, 1)
 					if chance_of_hit == 1:
-						location_count -= 1
 						print 'You defeated the demon {} without a scratch on you!'.format(demon)
 					else:
 						hit_points -= 1
-						location_count -= 1
 						print 'Your attempt failed. Your hitpoints suffer. ' \
 							  'It is now @: {} hit points.'.format(hit_points)
-
 
 				if enlightenment == 5:
 					break
@@ -230,10 +227,21 @@ class Nirvana(object):
 					print 'You did not achieve enlightenment. Try again in another life!'
 					break
 
-
 			if enlightenment == 5:
 				print 'You achieved nirvana state!'
-				break
-
-			# if enlightenment == 5:
-			# 	break
+				play_again = raw_input('Do you want to play again? (Y/N) ').lower()
+				if play_again == 'y':
+					self.game_play()
+				elif play_again == 'n':
+					break
+				else:
+					print 'Come back again to achieve nirvana!'
+					break
+		# if enlightenment == 5:
+		# 	play_again = raw_input('Do you want to play again? (Y/N)').lower()
+		# 	if play_again == 'y':
+		# 		self.game_play()
+		# 	elif play_again == 'n':
+		# 		break
+		# 	else:
+		# 		print 'Come back again to achieve nirvana!'
