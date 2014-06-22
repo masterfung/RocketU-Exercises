@@ -2,7 +2,7 @@ import random
 from pokemon import Pokemon
 from trainer import Trainer
 
-__author__ = 'htm'
+__author__ = '@masterfung'
 
 BATTLE_WINNER_USER = 0
 BATTLE_WINNER_COMPUTER = 1
