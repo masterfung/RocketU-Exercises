@@ -123,8 +123,10 @@ class Nirvana(object):
 	def mystery_box(self):
 		good_evil = ['good', 'evil']
 		mystery_present = {
-			'good': ['angelic dust', 'holy water', 'blessed sword', 'protection spell', 'invisibility cloak', 'antibiotics'],
-			'evil': ['death spell', 'rabies', 'wolves', 'decapitated', 'internal bleeding', 'dysentery']
+			'good': ['angelic dust', 'holy water', 'blessed sword',
+					 'protection spell', 'invisibility cloak', 'antibiotics'],
+			'evil': ['death spell', 'rabies', 'wolves', 'decapitated',
+					 'internal bleeding', 'dysentery']
 		}
 		g_e = random.choice(good_evil)
 		mystery = random.choice(mystery_present[g_e])
@@ -142,7 +144,7 @@ class Nirvana(object):
 	def destinations(self):
 		locations = ['Chicago', 'New York City', 'Vancouver', 'Paris', 'Tibet',
 					 'Melbourne', 'Moscow', 'Rome', 'Tokyo', 'Taipei', 'Beijing',
-					 'Cairo', 'Cape Town', 'Rio']
+					 'Cairo', 'Cape Town', 'Rio', 'London', 'Belize City']
 		location = random.choice(locations)
 		return location
 
