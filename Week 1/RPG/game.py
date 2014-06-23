@@ -23,7 +23,7 @@ class Nirvana(object):
 		return rand_difficulty
 	
 	def question_randomizer(self):
-		questions_range = randint(1, 1)
+		questions_range = randint(1, 5)
 		return questions_range
 
 	def welcome_message(self, response, random_math_types):
