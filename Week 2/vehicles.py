@@ -1,4 +1,5 @@
 import random
+from random import randint
 
 __author__ = '@masterfung'
 
@@ -8,15 +9,27 @@ __author__ = '@masterfung'
 
 class Vehicle(object):
 	def __init__(self, color):
-		self.speed = 0
+		self.speed = 10
 		self.name = 'Sexy Car'
 		self.direction = 0
 		self.color = color
 
+	def __repr__(self):
+		return self.color
+
 	@staticmethod
 	def random_car_color():
-		colors = ['red', 'silver', 'yellow']
+		colors = ['red', 'silver', 'yellow', 'orange', 'white', 'black']
 		return random.choice(colors)
+
+	@staticmethod
+	def vehicle_rand_direction():
+		return random.randint(-180, 180)
+
+	@classmethod
+	def new_random_color_car(cls):
+		return cls(cls.random_car_color())
+
 
 	def start_engine(self):
 		start_engine = raw_input('Do you want to start the engine? (y/n) ').lower()
@@ -166,33 +179,50 @@ class StreetCar(ManualCar, CarMixin, RadioMixin):
 			print 'No nitro is engaged. Normal speed.'
 			self.accelerate()
 
+	@classmethod
+	def new_class_creation(cls, vehicle):
+		new_vehicle = cls(vehicle.color) #color from init method
+		new_vehicle.speed = vehicle.speed
+		new_vehicle.direction = vehicle.direction
+		return new_vehicle
+
 
 class RaceCar(ManualCar, CarMixin):
 	def __init__(self, color):
 		super(RaceCar, self).__init__(color)
 
 
-street_car = StreetCar('white')
-street_car.name = 'Hittles of Goods'
-street_car.color = Vehicle.random_car_color() #calling the staticmethod
-print street_car.color
-street_car.password_auth()
-street_car.check_radio()
-street_car.use_nitro()
-street_car.brake()
-street_car.check_raining()
-street_car.stop()
-street_car.turn_left()
-street_car.change_gear()
-street_car.accelerate()
-street_car.accelerate()
-street_car.accelerate()
-street_car.accelerate()
-street_car.accelerate()
-street_car.accelerate()
-street_car.accelerate()
+# street_car = StreetCar('white')
+# street_car.name = 'Hittles of Goods'
+# street_car.color = Vehicle.random_car_color() #calling the staticmethod
+# print street_car.color
+# street_car.password_auth()
+# street_car.check_radio()
+# street_car.use_nitro()
+# street_car.brake()
+# street_car.check_raining()
+# street_car.stop()
+# street_car.direction = Vehicle.vehicle_rand_direction()
+# print street_car.direction
+# street_car.turn_left()
+# street_car.change_gear()
+# street_car.accelerate()
+# street_car.accelerate()
+# street_car.accelerate()
+# street_car.accelerate()
+# street_car.accelerate()
+# street_car.accelerate()
+# street_car.accelerate()
+#
+# print 'Your car name is: {}, color: {}, and end ' \
+# 	  'acceleration is: {}.'.format(street_car.name,
+# 									street_car.color,
+# 									street_car.speed)
 
-print 'Your car name is: {}, color: {}, and end ' \
-	  'acceleration is: {}.'.format(street_car.name,
-									street_car.color,
-									street_car.speed)
+my_car = Vehicle.new_random_color_car()
+print my_car
+
+child_car = StreetCar.new_class_creation(my_car)
+print child_car
+print child_car.speed
+
