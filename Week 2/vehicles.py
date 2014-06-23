@@ -1,8 +1,10 @@
+import random
+
 __author__ = '@masterfung'
 
 # CLASSES #
 
-#-MAIN-#
+# -MAIN-#
 
 class Vehicle(object):
 	def __init__(self, color):
@@ -11,8 +13,11 @@ class Vehicle(object):
 		self.direction = 0
 		self.color = color
 
-	# def __repr__(self):
-	# 	print 'Your car has the speed of {} and the color of {}.'.format(self.speed, self.color)
+	@staticmethod
+	def random_car_color():
+		colors = ['red', 'silver', 'yellow']
+		return random.choice(colors)
+
 	def start_engine(self):
 		start_engine = raw_input('Do you want to start the engine? (y/n) ').lower()
 		if start_engine == 'y':
@@ -24,24 +29,28 @@ class Vehicle(object):
 
 	def accelerate(self):
 		self.speed += max(0, 1)
+		print 'Car speed increase, zoom zoom zoom...'
 
 	def brake(self):
 		self.speed -= max(0, 1)
 		print 'Brake light shine red for a bit to warn others!'
 
+	def stop(self):
+		self.speed = 0
+		print 'Your vehicle has come to a stop.'
+
 	def turn_left(self):
 		self.direction -= 90
-		print 'Left signal flashed for 10 times.'
+		print 'Left signal turned on b/c you are turning left.'
 
 	def turn_right(self):
 		self.direction += 90
-		print 'Left signal flashed for 10 times.'
+		print 'Right signal turned on b/c you are turning right.'
 
 
 # MIXINS #
 
 class CarMixin(object):
-
 	def start_wipers(self):
 		self.wipers = 'on'
 
@@ -54,6 +63,7 @@ class CarMixin(object):
 			self.start_wipers()
 		else:
 			self.stop_wipers()
+
 
 class RadioMixin(object):
 	def start_radio(self):
@@ -68,6 +78,7 @@ class RadioMixin(object):
 
 		if user_channel_choice in channels:
 			print 'You are now listing to: {}.'.format(user_channel_choice)
+
 
 #-2nd Tier Starts-#
 
@@ -90,15 +101,17 @@ class ManualTrans(Vehicle):
 		self.break_light = False
 
 
-
 class AutoTrans(Vehicle):
 	pass
+
 
 class Boat(AutoTrans):
 	pass
 
+
 class AutoCar(AutoTrans, CarMixin):
 	pass
+
 
 class ManualCar(ManualTrans):
 	def __init__(self, color):
@@ -116,6 +129,7 @@ class ManualCar(ManualTrans):
 			print 'Normal gears.'
 		self.clutch_in = False
 
+
 #-2nd Tier End-#
 #-3rd Tier Start-#
 
@@ -126,7 +140,17 @@ class Motorbike(ManualTrans):
 	# then it should be Motorbike rather than ManualTrans. Hence,
 	# this calls the Vehicle brake method
 
+
 class StreetCar(ManualCar, CarMixin, RadioMixin):
+	def password_auth(self):
+		password_request = raw_input('Before you can start the car, what is the password? ')
+		if password_request == 'Pokemon':
+			print 'Welcome Pikachu!'
+			self.start_engine()
+		else:
+			print 'Your in guest mode. Certain features will not work.'
+			self.start_engine()
+
 	def brake(self):
 		super(ManualTrans, self).brake()
 		print 'You stepped on the break, slowing down by 1.'
@@ -134,7 +158,7 @@ class StreetCar(ManualCar, CarMixin, RadioMixin):
 	def use_nitro(self):
 		use_nitro = raw_input('Do you want to use nitro? (y/n) ').lower()
 		if use_nitro == 'y':
-			print 'You are not using nitro! 3X the speed'
+			print 'You are not using nitro! 3X the speed.'
 			self.accelerate()
 			self.accelerate()
 			self.accelerate()
@@ -144,18 +168,27 @@ class StreetCar(ManualCar, CarMixin, RadioMixin):
 
 
 class RaceCar(ManualCar, CarMixin):
-	def __init__(self,color):
+	def __init__(self, color):
 		super(RaceCar, self).__init__(color)
 
 
 street_car = StreetCar('white')
 street_car.name = 'Hittles of Goods'
-street_car.start_engine()
+street_car.color = Vehicle.random_car_color() #calling the staticmethod
+print street_car.color
+street_car.password_auth()
 street_car.check_radio()
 street_car.use_nitro()
 street_car.brake()
 street_car.check_raining()
+street_car.stop()
 street_car.turn_left()
+street_car.change_gear()
+street_car.accelerate()
+street_car.accelerate()
+street_car.accelerate()
+street_car.accelerate()
+street_car.accelerate()
 street_car.accelerate()
 street_car.accelerate()
 
