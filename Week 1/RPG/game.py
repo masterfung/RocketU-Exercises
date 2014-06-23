@@ -22,11 +22,11 @@ class Nirvana(object):
 		rand_difficulty = random.choice(options)
 		return rand_difficulty
 	
-	def question_randomizer(self):
+	def numbers_of_math_questions(self):
 		questions_range = randint(1, 5)
 		return questions_range
 
-	def welcome_message(self, response, random_math_types):
+	def math_welcome_message(self, response, random_math_types):
 		print 'The gods have challenge you to a {} {} math quiz. Get ready!'.format(response, random_math_types)
 
 	def results(self, correct, questions_range, rand_difficulty, random_math_types):
@@ -36,7 +36,7 @@ class Nirvana(object):
 		elif correct != (questions_range * .75):
 			print 'You are doomed! This is bad!'
 
-	def get_parts(self, opprand, questions_range, random_math_types):
+	def math_question_setter(self, opprand, questions_range, random_math_types):
 		correct = 0
 		computer_random_math_types = self.computer_random()
 		if random_math_types == 'mixed':
@@ -65,13 +65,13 @@ class Nirvana(object):
 			return n1 - n2
 
 	def math_compiled_methods(self, rand_difficulty, random_math_types, questions_range, opprand):
-		self.welcome_message(rand_difficulty, random_math_types)
-		correct = self.get_parts(opprand, questions_range, random_math_types)
+		self.math_welcome_message(rand_difficulty, random_math_types)
+		correct = self.math_question_setter(opprand, questions_range, random_math_types)
 		self.final_outcomes(questions_range, correct)
 		self.results(correct, questions_range, rand_difficulty, random_math_types)
 		return self, correct
 
-	def final_outcomes (self, questions_range, correct):
+	def final_outcomes(self, questions_range, correct):
 		print "\nI asked you {} questions.  You got {} of them right.".format(questions_range, correct)
 
 	def quiz(self, questions_range, rand_difficulty, random_math_types, correct):
@@ -132,7 +132,7 @@ class Nirvana(object):
 		mystery = random.choice(mystery_present[g_e])
 		return mystery, g_e
 
-	def random_event_generator(self):
+	def random_event_generator(self): #could do more in the future
 		pass
 
 	def seven_sins(self):
@@ -181,7 +181,7 @@ class Nirvana(object):
 				print 'You have {} hitpoints. Dont let it get to zero! You will die!'.format(hit_points)
 				random_math_types = self.math_quiz()
 				rand_difficulty = self.computer_random()
-				questions_range = self.question_randomizer()
+				questions_range = self.numbers_of_math_questions()
 				final_score = self.quiz(questions_range, rand_difficulty, random_math_types, correct)
 				demon, g_e = self.demons()
 				if final_score < questions_range: #need to fix this condition
