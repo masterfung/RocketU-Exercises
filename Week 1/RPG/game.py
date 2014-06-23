@@ -13,7 +13,6 @@ class Nirvana(object):
 	# Math quiz begins
 
 	def math_quiz(self):
-
 		math_types = ['add', 'subtract', 'multiply', 'divide']
 		random_math_types = random.choice(math_types)
 		return random_math_types
@@ -36,8 +35,6 @@ class Nirvana(object):
 			return True
 		elif correct != (questions_range * .75):
 			print 'You are doomed! This is bad!'
-		#self.quiz(questions_range, rand_difficulty, random_math_types, correct)
-
 
 	def get_parts(self, opprand, questions_range, random_math_types):
 		correct = 0
@@ -67,6 +64,13 @@ class Nirvana(object):
 		elif random_math_types == 'subtract':
 			return n1 - n2
 
+	def math_compiled_methods(self, rand_difficulty, random_math_types, questions_range, opprand):
+		self.welcome_message(rand_difficulty, random_math_types)
+		correct = self.get_parts(opprand, questions_range, random_math_types)
+		self.final_outcomes(questions_range, correct)
+		self.results(correct, questions_range, rand_difficulty, random_math_types)
+		return self, correct
+
 	def final_outcomes (self, questions_range, correct):
 		print "\nI asked you {} questions.  You got {} of them right.".format(questions_range, correct)
 
@@ -84,25 +88,13 @@ class Nirvana(object):
 			opprand = 25
 
 		if random_math_types == 'multiply':
-			self.welcome_message(rand_difficulty, random_math_types)
-			correct = self.get_parts(opprand, questions_range, random_math_types)
-			self.final_outcomes(questions_range, correct)
-			self.results(correct, questions_range, rand_difficulty, random_math_types)
+			correct = self.math_compiled_methods(rand_difficulty, random_math_types, questions_range, opprand)
 		elif random_math_types == 'divide':
-			self.welcome_message(rand_difficulty, random_math_types)
-			correct = self.get_parts(opprand, questions_range, random_math_types)
-			self.final_outcomes(questions_range, correct)
-			self.results(correct, questions_range, rand_difficulty, random_math_types)
+			correct = self.math_compiled_methods(rand_difficulty, random_math_types, questions_range, opprand)
 		elif random_math_types == 'subtract':
-			self.welcome_message(rand_difficulty, random_math_types)
-			correct = self.get_parts(opprand, questions_range, random_math_types)
-			self.final_outcomes(questions_range, correct)
-			self.results(correct, questions_range, rand_difficulty, random_math_types)
+			correct = self.math_compiled_methods(rand_difficulty, random_math_types, questions_range, opprand)
 		elif random_math_types == 'add':
-			self.welcome_message(rand_difficulty, random_math_types)
-			correct = self.get_parts(opprand, questions_range, random_math_types)
-			self.final_outcomes(questions_range, correct)
-			self.results(correct, questions_range, rand_difficulty, random_math_types)
+			correct = self.math_compiled_methods(rand_difficulty, random_math_types, questions_range, opprand)
 		elif random_math_types == 'q':
 			print 'Please come back soon. Practice makes perfect.'
 		else:
@@ -157,7 +149,6 @@ class Nirvana(object):
 	def get_user_response(self):
 		return raw_input('Would you like to pursue the quest '
 								  'to nirvana? (Y/N) ').lower()
-
 
 	def game_play(self):
 		user_response = self.get_user_response()
@@ -220,7 +211,9 @@ class Nirvana(object):
 						hit_points -= 1
 						print 'Your attempt failed. Your hitpoints suffer. ' \
 							  'It is now @: {} hit points.'.format(hit_points)
-
+				if hit_points == 0:
+					print 'Game Over!'
+					break
 				if enlightenment == 5:
 					break
 				else:
@@ -237,11 +230,3 @@ class Nirvana(object):
 				else:
 					print 'Come back again to achieve nirvana!'
 					break
-		# if enlightenment == 5:
-		# 	play_again = raw_input('Do you want to play again? (Y/N)').lower()
-		# 	if play_again == 'y':
-		# 		self.game_play()
-		# 	elif play_again == 'n':
-		# 		break
-		# 	else:
-		# 		print 'Come back again to achieve nirvana!'
