@@ -3,7 +3,6 @@ import random
 import sys
 import copy
 
-
 class Computer(object):
 	def computer_name(self):
 		computer_names = ['Billy', 'Sandy', 'Charles', 'Jeanne', 'Parker', 'Nicole']
@@ -13,13 +12,16 @@ class Computer(object):
 class Player(object):
 	def ask_player_name(self):
 		self.name = raw_input('What is your name? ')
-		print 'Welcome {} to a game of tic-tac-toe.'.format(self.name)
+		return self.name
 
+	def player_greeting(self):
+		name = self.ask_player_name()
+		print 'Welcome {} to a game of tic-tac-toe.'.format(name)
 
 class Game(object):
 	def __init__(self):
 		self.board = [' '] * 9
-		self.player_name = Player().ask_player_name()
+		# self.player_name = Player().ask_player_name()
 		self.player_marker = ''
 		self.computer_name = Computer().computer_name()
 		self.computer_marker = ''
@@ -66,19 +68,19 @@ class Game(object):
 
 	def quit_game(self):
 		self.draw_board
-		print "\n\t Thanks for playing :-) \n\t Come play again soon!\n"
+		print "\n\t Thanks for playing TTT! \n\t We hope to see you soon!\n"
 		sys.exit()
 
 	def is_winner(self, board, marker):
 		# order of checks:
 		# 1. across the horizontal top
-		#   2. across the horizontal middle
-		#   3. across the horizontal bottom
-		#   4. across the vertical left
-		#   5. across the vertical middle
-		#   6. across the vertical right
-		#   7. across first diagonal
-		#   8. across second diagonal
+		# 2. across the horizontal middle
+		# 3. across the horizontal bottom
+		# 4. across the vertical left
+		# 5. across the vertical middle
+		# 6. across the vertical right
+		# 7. across first diagonal
+		# 8. across second diagonal
 		for combo in self.winning_combos:
 			if (board[combo[0]] == board[combo[1]] == board[combo[2]] == marker):
 				return True
@@ -142,11 +144,11 @@ class Game(object):
 		self.help()
 		self.player_name = self.get_player_name()
 
-		# get user's preferred marker
+		# obtain user preference
 		self.player_marker, self.computer_marker = self.get_marker()
 		print "Your marker is " + self.player_marker
 
-		# randomly decide who can play first
+		# coin toss who goes first using randint
 		if random.randint(0, 1) == 0:
 			print "I will go first"
 			# self.make_move(self.board,random.choice(self.corners), self.computer_marker)
@@ -171,7 +173,7 @@ class Game(object):
 		player = turn  # h for human, c for computer
 		computer_score = 0
 		user_score = 0
-
+		Player().player_greeting()
 		while is_running:
 			if player == 'h':
 				user_input = self.get_player_move()
@@ -212,7 +214,7 @@ class Game(object):
 					else:
 						self.draw_board()
 						player = 'h'
-		print 'Your Score: {} \t Computer Score: {}'.format(user_score, computer_score)
+		print 'Your Score: {} \t {} Score: {}'.format(user_score, self.computer_name, computer_score)
 		# when you break out of the loop, end the game
 		self.end_game()
 
