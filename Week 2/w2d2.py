@@ -16,19 +16,19 @@ print f_to_c_conversion
 #Filter
 
 def three_or_less(x):
-	return len(x) > 3
+    return len(x) > 3
 
 new_lists = filter(three_or_less, ["Some", "words", "to", "test"])
 print new_lists
 
 def no_evens(x):
-	return x % 2 == 1
+    return x % 2 == 1
 
 odds = filter(no_evens, [1, 2, 3, 4, 5])
 print odds
 
 def got_no_red(x):
-	return x.color != 'red'
+    return x.color != 'red'
 
 no_red_racecar = filter(got_no_red, [RaceCar("black"), RaceCar("blue"), RaceCar("red")])
 print no_red_racecar
@@ -50,9 +50,48 @@ lowercase = filter(lambda x : x != x.capitalize(), ["Todd", "jane", "George"])
 print lowercase
 
 food_list = [('meat lovers', ['sausage', 'pepperoni', 'bacon', 'ham']),
-			 ('cheese', ['cheese']), ('veggie', ['mushrooms', 'onion', 'peppers'])]
+             ('cheese', ['cheese']), ('veggie', ['mushrooms', 'onion', 'peppers'])]
 
 meat = sorted(food_list, key=lambda food_list:food_list[1], reverse = True)
 #the food_list[1] means that it is looking inside the numbers of meat lovers (4), cheese (1), and veggie (3)
 #without the food_list then it will sort in the order of cheese, meat, veggie...since with reverse...it will be backwards
 print meat
+
+#Decorators
+
+def double(function):
+    def twice():
+        return function() * 2
+    return twice
+
+@double
+def numbers():
+    return 10
+
+print numbers()
+
+# ----- #
+
+def stringify(function):
+    def sentence():
+        return ' '.join(function())
+    return sentence
+
+@stringify
+def word_list():
+    return ['This', 'is', 'a', 'sentence']
+
+print word_list()
+
+# ----- #
+
+def currency(function):
+    def magic():
+        return '${:.2f}'.format(function())
+    return magic
+
+@currency
+def money():
+    return 30
+
+print money()
