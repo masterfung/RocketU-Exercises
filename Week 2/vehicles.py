@@ -189,7 +189,7 @@ class StreetCar(ManualCar, CarMixin, RadioMixin):
 
 class RaceCar(ManualCar, CarMixin):
 	def __init__(self, color):
-		super(RaceCar, self).__init__(color)
+		super(ManualCar, self).__init__(color)
 
 
 # street_car = StreetCar('white')
