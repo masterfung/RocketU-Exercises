@@ -1,4 +1,5 @@
 import random
+import sys
 
 __author__ = '@masterfung'
 
@@ -51,11 +52,15 @@ class GameLogic(object):
 		print 'Welcome to the game of Tic-Tac-Toe.'
 
 	def who_goes_first(self):
-		first_to_go = random.randint(0, 1)
-		if first_to_go == '0':
-			return 'player'
+		heads_tails = raw_input('Head or Tail? ').lower()
+		coin_flip = ['head', 'tail']
+		coin_flip_result = random.choice(coin_flip)
+		print coin_flip_result
+		if coin_flip_result == heads_tails:
+			print '{} the Computer starts first.'.format(computer_name)
 		else:
-			return 'computer'
+			print 'You start first.'
+
 
 	def play_again(self):
 		play_again = raw_input('Do you want to play again? (Y/N) ').lower()
@@ -66,11 +71,16 @@ class GameLogic(object):
 		else:
 			print 'Please enter a valid input.'
 
+	def winner_determination(self):
+		pass
+
 
 # GameLogic().welcome()
 #
 # user_name = Player()
 # computer_name = Computer().computer_name()
-Player().input_player_letter()
+something = Player().input_player_letter()
+computer_name = Computer().computer_name()
+GameLogic().who_goes_first()
 # Board().draw_board()
 
