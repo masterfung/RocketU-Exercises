@@ -92,8 +92,20 @@ print rep
 correct_email = "r.mutter@gmail.com"
 wrong_email = "r.mutter@yahoo,com"
 another_wrong_email = "r.mutteratgmail.com"
-
 signup_info = "Jenny: jenny@gmail.com, 867-5309"
-email_jenny = re.findall(r'\w+@\w+\.com', signup_info)
-print email_jenny
+
+def finding_email(input):
+	email = re.findall(r'\w+@\w+\.com', input)
+	print email
+
+#_Rudy's_#
+def find_email_address(info):
+	return re.findall(r'([A-Za-z0-9\.\+_-]+@\w+\.\w+)', info)
+
+print find_email_address(signup_info)
+
+finding_email(wrong_email)
+
+
+
 
