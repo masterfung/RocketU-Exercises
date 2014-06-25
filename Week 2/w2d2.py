@@ -48,7 +48,7 @@ Filter out all RaceCars that are the color red,
 [RaceCar("black"), RaceCar("blue"), RaceCar("red")] should be [RaceCar("black"), RaceCar("blue")]
 '''
 
-#Lambda
+# Lambda
 
 divisible = filter(lambda x: x % 3 == 0, [6, 8, 11, 12, 15])
 print divisible
@@ -164,8 +164,59 @@ def max(list):
 		m = max(list[1:])
 		return m if m > list[0] else list[0]
 
+
 print max([0, 6, 3, 12, 5])
 
+# instructor's way #
+def get_max(integers, max=0):
+	if len(integers) == 0:
+		return max
+	else:
+		num = integers.pop()
+		if num > max:
+			max = num
+		return get_max(integers, max)
 
-def list_flatten(list):
-	pass
+
+print get_max([0, 6, 3, 12, 5])
+
+
+def list_flatten(a):
+	results = []
+	for x in a:
+		if isinstance(x, list):
+			results += list_flatten(x)
+		else:
+			results.append(x)
+	return results
+
+
+print list_flatten([1, [2, 3], [[4, 5], 6]])
+
+
+# instructor's view #
+def flatten_list(list_to_flatten, new_list=None):
+	if new_list is None:
+		new_list = []
+	if len(list_to_flatten) == 0:
+		return new_list
+	else:
+		item = list_to_flatten.pop(0)
+		if isinstance(item, list):
+			new_list = flatten_list(item, new_list)
+		else:
+			new_list.append(item)
+
+		return flatten_list(list_to_flatten, new_list)
+
+print flatten_list([1, [2, 3], [[4, 5], 6]])
+
+
+def reverse_word(str):
+	if str == '':
+		return str
+	else:
+		return reverse_word(str[1:]) + str[0]
+
+
+print reverse_word('string is awesome')
