@@ -1,10 +1,11 @@
 import os
+import re
 
 __author__ = '@masterfung'
 
 
 # def create_directories(dirname):
-# 	for name in dirname:
+# for name in dirname:
 # 		os.mkdir(name)
 #
 # def create_nested_directories(dirname):
@@ -34,6 +35,7 @@ def find_words(line):
 	result = map(lambda x: x.strip(), results)
 	return result
 
+
 file = open('hello_world.txt', 'r')
 result = find_words(file)
 print result
@@ -46,4 +48,52 @@ def find_words(file_name):
 		words = words + line.split()
 	return words
 
+
 print find_words('hello_world.txt')
+
+#-End-#
+
+lines = [
+	'First line\n',
+	'Second line\n',
+	'Third line\n'
+]
+
+file = open('script.txt', 'w')
+for line in lines:
+	file.write(line)
+file.close()
+
+
+
+def reversing():
+	goods = [
+	'This is an example text file.\n',
+	'It should have its order reversed.\n',
+]
+
+	final = []
+	final = goods[0].split()
+	good = final[::-1]
+	good = ' '.join(good)
+
+	print good
+	with open('final.txt', 'w') as file:
+		file.writelines(good)
+
+reversing()
+
+#-Regex-#
+
+bibliography = "James, Henry. The Ambassadors. Rockville: Serenity, 2009-2010. Print."
+rep = re.findall(r'\d{4}', bibliography)
+print rep
+
+correct_email = "r.mutter@gmail.com"
+wrong_email = "r.mutter@yahoo,com"
+another_wrong_email = "r.mutteratgmail.com"
+
+signup_info = "Jenny: jenny@gmail.com, 867-5309"
+email_jenny = re.findall(r'\w+@\w+\.com', signup_info)
+print email_jenny
+
