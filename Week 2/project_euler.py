@@ -28,9 +28,9 @@ def even_fibonacci():
 	a, b = 1, 1
 	total = 0
 	while a <= 4000000:
-		if a % 2 == 0:
-			total += a
-		a, b = b, a+b  # the real formula for Fibonacci sequence
+		a, b = b, a+b # the real formula for Fibonacci sequence
+		if b % 2 == 0:
+			total += b
 	return total
 
 number = even_fibonacci()
