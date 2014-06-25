@@ -16,8 +16,9 @@ def three_and_five():
 total = three_and_five()
 print total
 
-
-
+#-reduction method using lambda-#
+summary = reduce(lambda x, y: x+y, [x for x in range(1, 1000) if x % 3 == 0 or x % 5 == 0])
+print summary
 
 
 
@@ -35,6 +36,11 @@ def even_fibonacci():
 number = even_fibonacci()
 print number
 
+
+
+
+
+# Largest prime factor #
 
 
 
