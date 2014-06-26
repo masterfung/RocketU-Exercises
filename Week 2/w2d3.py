@@ -1,5 +1,6 @@
 import os
 import re
+import csv
 
 __author__ = '@masterfung'
 
@@ -108,4 +109,6 @@ finding_email(wrong_email)
 
 
 
-
+with open('seuss.csv', 'rb') as file:
+	for row in csv.reader(file):
+		print row
