@@ -4,6 +4,12 @@ import csv
 __author__ = '@masterfung'
 
 class CSVtoHtml(object):
+	def styles(self):
+		styling = {
+			"h1": "red",
+		}
+		for k, v in styling.items():
+			return k, v
 
 	def closing_div(self):
 		return '</div>\n'
@@ -12,7 +18,8 @@ class CSVtoHtml(object):
 		return '</html>'
 
 	def head(self):
-		return ''
+		styles = self.styles()
+		return '\t<head>\n\t\t<style>\n\t\t{}\n\t\t</style>\n\t</head>\n'.format(styles)
 
 	def html_generator(self):
 		list = []
@@ -22,6 +29,7 @@ class CSVtoHtml(object):
 				list.append(data)
 			print list
 			previous = list[1][1]
+			styling = self.head()
 			closing_div = self.closing_div()
 			closing_html = self.closing_html()
 			if previous == 'div':
@@ -63,8 +71,8 @@ class CSVtoHtml(object):
 				string.append(closing_html)
 		with open('csv_html.html', 'w') as write_file:
 			write_file.write('<html> \n')
-
-			write_file.write('<h1>Welcome to Johnny\'s Page!</h1> \n')
+			write_file.writelines(styling)
+			write_file.write('\t<h1>Welcome to Johnny\'s Page!</h1> \n')
 			write_file.writelines(string)
 
 
