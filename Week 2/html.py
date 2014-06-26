@@ -3,13 +3,17 @@ import csv
 
 __author__ = '@masterfung'
 
+
 class CSVtoHtml(object):
 	def styles(self):
+
 		styling = {
 			"h1": "red",
+			"p": "#363cff",
 		}
 		for k, v in styling.items():
-			return k, v
+			css = "{} {}".format(k, '{') + "\n\t\t\t{}: {}{}".format('color', v, '}')
+			return css
 
 	def closing_div(self):
 		return '</div>\n'
@@ -32,16 +36,20 @@ class CSVtoHtml(object):
 			styling = self.head()
 			closing_div = self.closing_div()
 			closing_html = self.closing_html()
+			s = '<h2>Hello World[http://savthecoder.com/blog/images/fry_notsure.png]!</h2>'
+			output = re.sub(r'<h2.*>(.*)</h2>',
+							"<a href='http://savthecoder.com/blog/images/fry_notsure.png'><h2>Hello World </h2></a>", s)
+			print s, output
 			if previous == 'div':
 				str = '{}<{}>\n'.format('\t', previous)
 				string.append(str)
 			if list[2][1] == 'h2':
 				str = '{}<{}>{}</{}>\n'.format('\t\t', list[2][1],
-													list[2][3], list[2][1])
+											   list[2][3], list[2][1])
 				string.append(str)
 			if list[3][1] == 'p':
 				str = '{}<{}>{}</{}>\n'.format('\t\t', list[3][1],
-													list[3][3], list[3][1])
+											   list[3][3], list[3][1])
 				string.append(str)
 			if list[4][1] == 'div':
 				str = '{}<{}>\n'.format('\t\t', list[4][1])
