@@ -39,13 +39,12 @@ class CSVtoHtml(object):
 			s = '<h2>Hello World[http://savthecoder.com/blog/images/fry_notsure.png]!</h2>'
 			output = re.sub(r'<h2.*>(.*)</h2>',
 							"<a href='http://savthecoder.com/blog/images/fry_notsure.png'><h2>Hello World </h2></a>", s)
-			print s, output
+			print output
 			if previous == 'div':
 				str = '{}<{}>\n'.format('\t', previous)
 				string.append(str)
 			if list[2][1] == 'h2':
-				str = '{}<{}>{}</{}>\n'.format('\t\t', list[2][1],
-											   list[2][3], list[2][1])
+				str = '{}{}\n'.format('\t\t', output)
 				string.append(str)
 			if list[3][1] == 'p':
 				str = '{}<{}>{}</{}>\n'.format('\t\t', list[3][1],
@@ -83,5 +82,8 @@ class CSVtoHtml(object):
 			write_file.write('\t<h1>Welcome to Johnny\'s Page!</h1> \n')
 			write_file.writelines(string)
 
-
 CSVtoHtml().html_generator()
+
+
+# Write a function that finds the largest number in a list (don't use the python max function), [0, 6, 3, 12, 5] should return 12.
+
