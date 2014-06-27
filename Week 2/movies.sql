@@ -1,19 +1,18 @@
-
-
 CREATE TABLE movie (
   id  serial PRIMARY KEY,
   name varchar(130) NOT NULL,
   year integer NOT NULL,
-  length integer NOT NULL
+  length integer NOT NULL,
+  budget integer NOT NULL
 );
 
-INSERT INTO movie (name, year, length)
+INSERT INTO movie (name, year, length, budget)
     VALUES
-      ('How to Train Your Dragon', 2010, 98),
-      ('Up', 2009, 96),
-      ('My Neighbor Totoro', 1988, 86),
-      ('The Edge of Tomorrow', 2014, 113),
-      ('Godzilla', 2014, 123);
+      ('How to Train Your Dragon', 2010, 98, 165000000),
+      ('Up', 2009, 96, 175000000),
+      ('My Neighbor Totoro', 1988, 86, 0),
+      ('The Edge of Tomorrow', 2014, 113, 178000000),
+      ('Godzilla', 2014, 123, 160000000);
 
 CREATE TABLE actor (
   id  serial PRIMARY KEY,
@@ -66,8 +65,7 @@ INSERT INTO genre (type)
 CREATE TABLE genre_movie (
   genre_id integer references genre,
   movie_id integer references movie,
-  primary key (genre_id, movie_id)
-
+  PRIMARY KEY (genre_id, movie_id)
 );
 
 INSERT INTO genre_movie (genre_id, movie_id)
@@ -101,3 +99,20 @@ INSERT INTO actor_movie (actor_id, movie_id)
       (13, 5),
       (14, 5),
       (15, 5);
+
+SELECT * from movie where year > 2009;
+
+SELECT movie.id, movie.name
+  FROM genre
+  INNER JOIN genre_movie
+  ON (genre.id = genre_movie.genre_id)
+  INNER JOIN movie
+  ON (genre_movie.movie_id = movie.id)
+  WHERE genre.id = 1;
+
+SELECT director.id, director.name, movie.budget
+  from director, movie
+
+  where director.id > 0 and movie.budget > 100;
+
+select actor.name, movie.name, movie.year from actor, movie order by movie.year asc;
