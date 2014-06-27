@@ -110,9 +110,8 @@ SELECT movie.id, movie.name
   ON (genre_movie.movie_id = movie.id)
   WHERE genre.id = 1;
 
-SELECT director.id, director.name, movie.budget
+SELECT director.id as director_id, director.name as director_name, movie.name, movie.budget
   from director, movie
-
-  where director.id > 0 and movie.budget > 100;
+  where director.id = movie.id;
 
 select actor.name, movie.name, movie.year from actor, movie order by movie.year asc;
