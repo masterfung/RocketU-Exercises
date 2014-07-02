@@ -1,4 +1,4 @@
-__author__ = 'htm'
+__author__ = '@masterfung'
 
 class Trainer(object):
 	def __init__(self, name, age):
