@@ -15,6 +15,12 @@ def get_file_path(filename):
 	file_path = os.path.join(os.getcwd(), filename)
 	return file_path
 
+def generate_random_string():
+	random_string = ''
+	for i in range(0, 4):
+		random_string += random.choice(string.ascii_letters)
+	return random_string
+
 def read_csv(filepath):
 	with open(filepath, 'rU') as csvfile:
 		reader = csv.reader(csvfile)
@@ -23,3 +29,5 @@ def read_csv(filepath):
 
 path = get_file_path('hobbies.csv')
 read_csv(path)
+random_variable = generate_random_string()
+print random_variable
