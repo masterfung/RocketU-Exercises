@@ -24,4 +24,4 @@ def locu_search(query):
 	for item in data['objects']:
 		print item['name'], item['phone']
 
-locu_search('san francisco')
+locu_search('champaign')
