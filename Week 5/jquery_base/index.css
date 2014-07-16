@@ -1,0 +1,15 @@
+.product {
+	height: 100px;
+	width: 100px;
+	border: 1px solid black;
+}
+
+.moreInfo {
+	display: none;
+}
+
+.cart {
+	height: 400px;
+	width: 400px;
+	border; 1px solid red;
+}

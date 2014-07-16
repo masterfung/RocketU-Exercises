@@ -1,5 +1,4 @@
-import urllib2
-import json
+postgres -D /usr/local/var/postgres
 
 __author__ = '@masterfung'
 
