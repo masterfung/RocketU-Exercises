@@ -6,24 +6,58 @@
 		<link rel="stylesheet" type="text/css" href="index.css">
 	</head>
 	<body>
+    <h1>Welcome to the Magixdom</h1>
+    <h2>We sell magical goods. No refunds.</h2>
+    <h2>We only accept Okta, the rarest mineral stone in the known Universe.</h2>
+    <h3>Manager: @masterfung</h3>
+    <button class="checkout">Checkout</button>
+    <div class="checkout-box">
+        <h3>Where to ship your goods?</h3>
+        <form action="POST">
+            <h5>Name: <input type="text" name="Name"/></h5>
+            <h5>Address: <input type="text" name="Name"/></h5>
+            <h5>City: <input type="text" name="Name"/></h5>
+            <h5>Zip Code: <input type="text" name="Name"/></h5>
+            <h5>Phone: <input type="text" name="Name"/></h5>
+        </form>
+    </div>
 		<div class="product" id="box">
-			Product
-			<button class="add">Add to cart</button>
+			<h1 id="ancient">Ancient Stone of Wisdom</h1>
+            <h5>Price: <p id="price-1">15</p>Okta</h5>
+			<button class="add" id="1">Add to cart</button>
 			<button class="tellMore">Tell me more</button>
+            <img class="img_space_buffer img-container" src="http://www.techgadgets.in/images/magic-stone-phone.jpg" alt="Wisdom Stone"/>
 			<div class="moreInfo">
-				More info
+				<p>Weild knowledge for two years. Cannot be stacked with
+                other Wisdom stones or other goods</p>
 			</div>
 		</div>
 		<div class="product" id="otherBox">
-			Product 2
-			<button class="add">Add to cart</button>
+			<h1 id="exlir">Magical Exlir of Immortality</h1>
+            <h5>Price: <p id="price-2">50</p>Okta</h5>
+			<button class="add" id="2">Add to cart</button>
 			<button class="tellMore">Tell me more</button>
+            <img class="img_space_buffer img-container" src="http://www.manizone.co.uk/images/Blue_Ape_bezoar_stones.JPG" alt="Exlir of Magicalness"/>
 			<div class="moreInfo">
-				More info
+				<p>Immortality last for two centuries. Immune to disease
+                but not to major forms of death!</p>
 			</div>
 		</div>
 
-		<div id="cart">
+        <div class="product" id="thirdBox">
+			<h1 id="truthEye">The Eye of Truth</h1>
+            <h5>Price: <p id="price-3">13</p>Okta</h5>
+			<button class="add" id="3">Add to cart</button>
+			<button class="tellMore">Tell me more</button>
+            <img class="img_space_buffer img-container" src="http://ecx.images-amazon.com/images/I/61bPOjuSl1L._SL1500_.jpg" alt="Eye of Truth"/>
+			<div class="moreInfo">
+				<p>Truth will hurt. Use it wisely. Once you held
+                the truth, it is forever in your arms to hold.
+                Can ask the Eye three truthful requests.</p>
+			</div>
+		</div>
+
+		<div class="cart">
 			<p>Cart</p>
 		</div>
 	</body>
