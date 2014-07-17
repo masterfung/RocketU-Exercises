@@ -10,11 +10,23 @@ form {
     margin-bottom: 25px;
 }
 
+button {
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #6080ff;
+    border: none;
+}
+
 .title {
     font-size: 15em;
     height: 800px;
     width: 100%;
     max-height: 100%;
+}
+
+#box {
+    border: 5px darkblue dotted;
 }
 
 .product {
@@ -55,4 +67,8 @@ form {
 .checkout-box {
     display: none;
     float:right;
+}
+
+.active {
+    border: 3px solid red;
 }
