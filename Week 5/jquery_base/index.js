@@ -1,6 +1,14 @@
 $(document).ready(function() {
     var total = [];
 
+    var productOne = 0;
+    var productTwo = 0;
+    var productThree = 0;
+
+    var countOne = 0;
+    var countTwo = 0;
+    var countThree = 0;
+
     $(".tellMore").on('click', function() {
         $('.moreInfo').css('display', 'inline');
     });
@@ -11,47 +19,89 @@ $(document).ready(function() {
 
     $('.discount').on('click', function(){
         var x = 15 * 0.9;
-        $('#price-1').text('$' + x);
+        $('#price-1').text(x);
     });
 
     $("#1").on('click', function() {
-        count = 0;
+
         var x = confirm('Are you sure you want to add this product?')
-        if (x == true) {
+        if (countOne < 1) {
             $("#ancient").clone().appendTo('.cart');
-            count++;
-            total.push(parseInt($('#price-1').text()));
-            console.log(total);
         }
+        if (x == true) {
+
+            countOne++;
+            price = (parseInt($('#price-1').text()));
+            total.push(price);
+            productOne = price * countOne;
+
+            tempSum = productOne + productTwo +productThree;
+
+            $('div h2').text('Total: $' + tempSum);
+
+            console.log(price);
+            console.log(countOne);
+        }
+
     });
 
     $("#2").on('click', function() {
-        $('#exlir').clone().appendTo('.cart');
-        $("#price-2").clone().appendTo('.cart');
-        total.push(parseInt($('#price-2').text()));
+        var x = confirm('Are you sure you want to add this product?')
+        if (countTwo < 1) {
+            $("#exlixir").clone().appendTo('.cart');
+        }
+        if (x == true) {
+
+            countTwo++;
+            price = (parseInt($('#price-2').text()));
+            total.push(price);
+            productTwo = price * countTwo;
+
+            tempSum = productOne + productTwo +productThree;
+
+            $('div h2').text('Total: $' + tempSum);
+
+            console.log(price);
+            console.log(countTwo);
+        }
         console.log(total);
     });
 
     $("#3").on('click', function() {
-        $('#truthEye').clone().appendTo('.cart');
-        $("#price-3").clone().appendTo('.cart');
-        total.push(parseInt($('#price-3').text()));
+        var x = confirm('Are you sure you want to add this product?')
+        if (countThree < 1) {
+            $("#truthEye").clone().appendTo('.cart');
+        }
+        if (x == true) {
+
+            countThree++;
+            price = (parseInt($('#price-3').text()));
+            total.push(price);
+            productThree = price * countThree;
+
+            tempSum = productOne + productTwo +productThree;
+
+            $('div h2').text('Total: $' + tempSum);
+
+            console.log(price);
+            console.log(countTwo);
+        }
         console.log(total);
     });
 
     $(".checkout").on('click', function() {
         var x = confirm('Do you want to checkout?');
         if (x == true) {
-            finalSum = 0;
+            final = 0;
             for (var i = 0; i < total.length; i++) {
-                finalSum += total[i];
+                final += total[i];
             }
 
             $('.cart').toggle("hide");
             $(".checkout-box").css("display", 'inline');
-            $('.checkout-box').prepend("Final Total: $" + finalSum);
+            $('.checkout-box').prepend("Final Total: $" + final);
 
-            alert("Your total is: $" + finalSum + ".00 Okta");
+            alert("Your total is: $" + final + ".00 Okta");
         }
 
     });
