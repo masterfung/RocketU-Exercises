@@ -3,13 +3,17 @@
 	<head>
 		<script src="jquery-1.11.1.js"></script>
 		<script src="index.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="index.css">
 	</head>
 	<body>
-    <h1>Welcome to the Magixdom</h1>
+    <h1 class="title">Welcome to the Magixdom</h1>
     <h2>We sell magical goods. No refunds.</h2>
     <h2>We only accept Okta, the rarest mineral stone in the known Universe.</h2>
     <h3>Manager: @masterfung</h3>
+    <div class="cart">
+			<p>Cart</p>
+		</div>
     <button class="checkout">Checkout</button>
     <div class="checkout-box">
         <h3>Where to ship your goods?</h3>
@@ -19,6 +23,7 @@
             <h5>City: <input type="text" name="Name"/></h5>
             <h5>Zip Code: <input type="text" name="Name"/></h5>
             <h5>Phone: <input type="text" name="Name"/></h5>
+            <input type="submit"/>
         </form>
     </div>
 		<div class="product" id="box">
@@ -57,8 +62,6 @@
 			</div>
 		</div>
 
-		<div class="cart">
-			<p>Cart</p>
-		</div>
+
 	</body>
 </html>

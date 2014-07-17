@@ -35,6 +35,7 @@ $(document).ready(function() {
 
         $('.cart').toggle("hide");
         $(".checkout-box").css("display", 'inline');
+        $('.checkout-box').prepend("Final Total: $" + finalSum);
 
         alert("Your total is: $" + finalSum + ".00 Okta");
     });
