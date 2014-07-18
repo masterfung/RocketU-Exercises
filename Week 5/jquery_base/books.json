@@ -1,0 +1,44 @@
+{
+    "book1": {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "character": "Bilbo Baggins"
+    },
+    "book2": {
+        "title": "Ender's Game",
+        "author": "Orson Scott Card",
+        "genre": "Fantasy",
+        "character": "Ender Wiggin",
+    },
+    "book3": {
+        "title": "Mistborn",
+        "author": "Brandon Sanderson",
+        "genre": "Fantasy",
+        "character": "Brandon Sanderson",
+    },
+    "book4": {
+        "title": "Harry Potter and the Chamber of Secrets",
+        "author": "J.K. Rowling",
+        "genre": "Fantasy",
+        "character": "Harry Potter",
+    },
+    "book5": {
+        "title": "The Fountainhead",
+        "author": "Ann Rand",
+        "genre": "Literature",
+        "character": "Howard Roark",
+    },
+    "book6": {
+        "title": "The Emperor of All Maladies",
+        "author": "Siddhartha Mukherjee",
+        "genre": "Non-fiction",
+        "character": "Queen Atossa",
+    },
+    "book7": {
+        "title": "Harry Potter and the Goblet of Fire",
+        "author": "J.K. Rowling",
+        "genre": "Fantasy",
+        "character": "Harry Potter",
+    },
+}
