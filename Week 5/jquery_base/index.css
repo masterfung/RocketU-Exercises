@@ -27,6 +27,24 @@ button {
 
 #box {
     border: 5px darkblue dotted;
+
+}
+
+#box:hover {
+    text-decoration: none;
+	color: #4e49ff;
+	text-shadow: none;
+	-webkit-transition: 500ms linear 0s;
+	-moz-transition: 500ms linear 0s;
+	-o-transition: 500ms linear 0s;
+	transition: 500ms linear 0s;
+	outline: 0 none;
+    border: 8px #16528b dotted;
+}
+
+#box h1 {
+    color: #30ff24;
+	text-shadow: -1px 1px 8px #4ba3ff, 1px -1px 8px #aaff66;
 }
 
 .product {
