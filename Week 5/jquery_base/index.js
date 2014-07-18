@@ -63,11 +63,6 @@ $(document).ready(function() {
         oneTotal.pop();
         countOne -= 1;
         productOne = price * oneTotal.length;
-
-//        productTwo = productTwo - Math.abs(price);
-//        tempSumOne = productOne + productTwo + productThree;
-//        console.log(tempSumOne);
-//        console.log(countOne);
         headerReference.html('Total: $' + productOne + "<br/>" + "Quantity: " + countOne);
         console.log(oneTotal)
     });
@@ -76,7 +71,7 @@ $(document).ready(function() {
 
         if (countTwo < 1) {
             $("#exlixir").clone().attr("id", "newExlixir").appendTo('.cart');
-            $('#newExlixir').append('<button class="remove">Removed Item</button>');
+            $('#newExlixir').append('<button class="secondRemove">Removed Item</button>');
         }
 
         countTwo++;
@@ -84,9 +79,9 @@ $(document).ready(function() {
         twoTotal.push(price);
         productTwo = price * countTwo;
 
-        var tempSumTwo = productOne + productTwo + productThree;
+        tempSumTwo = productOne + productTwo + productThree;
 
-        headerReference.html('Total: $' + productTwo + "<br/>").append( 'Quantity of Wisdom: ' + countTwo);
+        headerReference.html('Total Elixir: $' + tempSumTwo + "<br/>").append( 'Quantity of Wisdom: ' + countTwo);
 
         console.log(twoTotal);
         console.log(countTwo);
@@ -94,38 +89,38 @@ $(document).ready(function() {
         console.log(twoTotal);
     });
 
-    $(document).on('click', '.remove', function() {
+    $(document).on('click', '.secondRemove', function() {
 
         twoTotal.pop();
         countTwo -= 1;
         productTwo = price * twoTotal.length;
-        headerReference.html('Total: $' + productThree + "<br/>" + "Quantity: " + countTwo);
+        headerReference.html('Total: $' + productTwo + "<br/>" + "Quantity: " + countTwo);
         console.log(tempSumTwo)
     });
 
     $("#3").on('click', function() {
         if (countThree < 1) {
             $("#truthEye").clone().attr("id", "newtruthEye").appendTo('.cart');
-            $('#newtruthEye').append('<button class="remove">Removed Item</button>');
+            $('#newtruthEye').append('<button class="thirdRemove">Removed Item</button>');
         }
 
         countThree++;
         price = (parseInt($('#price-3').text()));
         threeTotal.push(price);
-        productThree = price * countTwo;
+        productThree = price * countThree;
 
-        var tempSumThree = productOne + productTwo + productThree;
+        tempSumThree = productOne + productTwo + productThree;
 
         headerReference.html('Total: $' + tempSumThree + "<br/>").append( 'Quantity of Wisdom: ' + countThree);
 
 
-            console.log(price);
-            console.log(countThree);
+        console.log(price);
+        console.log(countThree);
 
         console.log(threeTotal);
     });
 
-    $(document).on('click', '.remove', function() {
+    $(document).on('click', '.thirdRemove', function() {
 
         threeTotal.pop();
         countThree -= 1;
@@ -167,22 +162,3 @@ $(document).ready(function() {
 
 
 });
-
-//function confirmation() {
-//        var x;
-//        if (confirm('Do you want to proceed to checkout?') == true) {
-//
-//            finalSum = 0;
-//            for (var i = 0; i < total.length; i++) {
-//                finalSum += total[i];
-//            }
-//
-//            $('.cart').toggle("hide");
-//            $(".checkout-box").css("display", 'inline');
-//            $('.checkout-box').prepend("Final Total: $" + finalSum);
-//
-//            alert("Your total is: $" + finalSum + ".00 Okta");
-//        } else {
-//            x = 'Come back when you are ready';
-//        }
-//    }
