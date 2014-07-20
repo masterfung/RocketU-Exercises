@@ -20,17 +20,30 @@ $(document).ready(function() {
 
                 }
             }).done(function() {
-                // code here
                 console.log(team);
-                console.log(team[1].image);
+
+                if (team.length = 5) {
+                    console.log(team[0].image);
                 var spriteUrl = 'http://pokeapi.co' + team[0].image;
+//                var spriteUrl2 = 'http://pokeapi.co' + team[1].image;
+
                 $('.pokemon')
-            .append("<div class='pokebox'><div class='selection inactive'><img src=" + spriteUrl + "/>" +
-                "<p class='name'>" + team[0].name.charAt(0).toUpperCase() + team[0].name.substr(1).toLowerCase() + "</p></div></div>")
-            .append("<div class='pokebox'><div class='field inactive'><img src=" + spriteUrl + "/>" +
-                "<p class='name'>" + team[0].name.charAt(0).toUpperCase() + team[0].name.substr(1).toLowerCase() + "</p></div></div>");
+                .append("<div class='pokebox'><div class='selection inactive'><img src=" + spriteUrl + "/>" +
+                    "<p class='name'>" + team[0].pokemon.name.charAt(0).toUpperCase() + team[0].pokemon.name.substr(1).toLowerCase() + "</p></div></div>")
+                .append("<div class='pokebox'><div class='field inactive'><img src=" + spriteUrl + "/>" +
+                    "<p class='name'>" + team[0].pokemon.name.charAt(0).toUpperCase() + team[0].pokemon.name.substr(1).toLowerCase() + "</p></div></div>");
+
+            }
+
+                        $('.pokebox').on('click', function(event) {
+                event.preventDefault();
+
+                $(this).children('.inactive').toggle();
+            })
 
             });
+
+
         }
 
 //        if (team.length < 6) {
