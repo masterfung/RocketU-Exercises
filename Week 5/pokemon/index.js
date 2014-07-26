@@ -22,7 +22,7 @@ $(document).ready(function() {
             }).done(function() {
                 console.log(team);
 
-                if (team.length = 5) {
+                if (team.length <= 5) {
                     console.log(team[0].image);
                 var spriteUrl = 'http://pokeapi.co' + team[0].image;
 //                var spriteUrl2 = 'http://pokeapi.co' + team[1].image;
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
             }
 
-                        $('.pokebox').on('click', function(event) {
+                $('.pokebox').on('click', function(event) {
                 event.preventDefault();
 
                 $(this).children('.inactive').toggle();
